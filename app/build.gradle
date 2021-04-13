@@ -34,27 +34,30 @@ android {
 
     }
     buildTypes {
-        debug {
-            signingConfig signingConfigs.release
 
-        }
-        release {
-            signingConfig signingConfigs.release
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            debuggable false
-            zipAlignEnabled true
-            shrinkResources true
-            minifyEnabled true
+        buildTypes {
+            debug {
+                signingConfig signingConfigs.release
 
-            applicationVariants.all { variant ->
-                variant.outputs.all {
-                    def fileName = "Biubike" + "_V${defaultConfig.versionName}(${defaultConfig.versionCode})_" +
-                            variant.name +
-                            ".apk"
-                    outputFileName = fileName
-                }
             }
+            release {
+                signingConfig signingConfigs.release
+                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+                debuggable false
+                zipAlignEnabled true
+                shrinkResources true
+                minifyEnabled true
 
+                applicationVariants.all { variant ->
+                    variant.outputs.all {
+                        def fileName = "Biubike" + "_V${defaultConfig.versionName}(${defaultConfig.versionCode})_" +
+                                variant.name +
+                                ".apk"
+                        outputFileName = fileName
+                    }
+                }
+
+            }
         }
     }
 
