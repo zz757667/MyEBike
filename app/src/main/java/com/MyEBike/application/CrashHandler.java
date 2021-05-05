@@ -24,7 +24,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
     private static final boolean DEBUG = true;
     //文件路径
     private static final String PATH = Environment.getExternalStorageDirectory().getPath() ;
-    private static final String FILE_NAME = "biubike_crash";
+    private static final String FILE_NAME = "myebike_crash";
     private static final String FILE_NAME_SUFEIX = ".txt";
     private static Thread.UncaughtExceptionHandler mDefaultCrashHandler;
     private static CrashHandler mCrashHandler = new CrashHandler();

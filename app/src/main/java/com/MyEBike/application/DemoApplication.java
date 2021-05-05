@@ -16,10 +16,16 @@ import java.io.File;
 public class DemoApplication extends Application {
 
     public static String mSDCardPath;
-    public static final String APP_FOLDER_NAME = "BiuBike";
+    public static final String APP_FOLDER_NAME = "MyEBike";
+    public static DemoApplication instance;
+
+    public static DemoApplication getInstance() {
+        return instance;
+    }
 
     public void onCreate() {
         super.onCreate();
+        instance = (DemoApplication) getApplicationContext();
         SDKInitializer.initialize(getApplicationContext());
         SpeechUtility.createUtility(this, SpeechConstant.APPID +"=58f9ff61");
 //        CrashHandler crashHandler=CrashHandler.getInstance();

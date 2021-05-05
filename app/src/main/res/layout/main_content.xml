@@ -141,6 +141,25 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ll_bike_battery"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textview_battery"
+
+                    style="@style/text_style"
+                    android:text="@string/battery" />
+
+                <TextView
+                    android:id="@+id/bike_battery"
+                    style="@style/text_style"
+                    android:textColor="@color/color_393939" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/ll_bike_price"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

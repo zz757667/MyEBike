@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -11,8 +12,16 @@ import android.widget.TextView;
 import com.MyEBike.R;
 import com.MyEBike.adapter.ChargeAmountAdapter;
 import com.MyEBike.adapter.ChargeAmountDividerDecoration;
+import com.MyEBike.api.BaseResponseModel;
 import com.MyEBike.base.BaseActivity;
 import com.MyEBike.util.Utils;
+import com.google.gson.Gson;
+
+import io.reactivex.SingleObserver;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by wwj on 21/4/9.
@@ -22,35 +31,44 @@ public class WalletActivity extends BaseActivity implements ChargeAmountAdapter.
 
     private RecyclerView recyclerview_acount;
     private ChargeAmountAdapter adapter;
-    private TextView ballance;
+    private TextView ballance1,ballance2,money;
     private ImageView wechat, alipay;
     private RelativeLayout wechat_layout, alipay_layout;
+    private Button charge;
+    private int money_position=0;
+    private float money_account;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wallet);
 
         recyclerview_acount = findViewById(R.id.recyclerview_acount);
-        ballance = findViewById(R.id.ballance);
+        ballance1 = findViewById(R.id.ballance1);
+        ballance2 = findViewById(R.id.ballance2);
+        money = findViewById(R.id.money);
         wechat = findViewById(R.id.wechat);
         alipay = findViewById(R.id.alipay);
         wechat_layout = findViewById(R.id.wechat_layout);
         alipay_layout = findViewById(R.id.alipay_layout);
         wechat_layout.setOnClickListener(this);
         alipay_layout.setOnClickListener(this);
+        charge = findViewById(R.id.charge);
+        charge.setOnClickListener(this::add_money);
 
         recyclerview_acount.setLayoutManager(new GridLayoutManager(this, 3));
         adapter = new ChargeAmountAdapter(this);
         recyclerview_acount.setAdapter(adapter);
         adapter.setOnClickListener(this);
         recyclerview_acount.addItemDecoration(new ChargeAmountDividerDecoration(10));
-        String acount_ballance = getString(R.string.account_ballance);
-        Utils.setSpannableStr(ballance, acount_ballance, acount_ballance.length() - 3, acount_ballance.length() - 2, 1.2f);
+
+        String acount_ballance = getString(R.string.money_default);
+        Utils.setSpannableStr(money, acount_ballance, acount_ballance.length() - 1, acount_ballance.length() , 1.2f);
     }
 
     @Override
     public void onItemClick(View v, int position) {
         adapter.setSelectPosition(position);
+        money_position=position;
     }
 
     @Override
@@ -66,4 +84,60 @@ public class WalletActivity extends BaseActivity implements ChargeAmountAdapter.
                 break;
         }
     }
+
+    public void add_money(View view){
+        apiWrapper.getService().add_money(money_position)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<BaseResponseModel>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+                        addDispose(d);
+                    }
+
+                    @Override
+                    public void onSuccess(@NonNull BaseResponseModel baseResponseModel) {
+
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+
+                    }
+                });
+
+    }
+
+    public void get_money(View view){
+        apiWrapper.getService().get_money(money_account)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<BaseResponseModel>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+                        addDispose(d);
+                    }
+
+                    @Override
+                    public void onSuccess(@NonNull BaseResponseModel baseResponseModel) {
+
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+
+                    }
+                });
+
+    }
+
+    //public static GetMoney getMoney(String res){
+    //    Gson gson = new Gson();
+
+    //}
+
 }
+
+
+
+

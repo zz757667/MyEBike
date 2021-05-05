@@ -11,7 +11,8 @@ import android.widget.TextView;
 import com.MyEBike.R;
 
 /**
- * Created by gaolei on 17/3/2.
+ * 未打开gps 提示dialog 点确定跳出开启权限
+ * Created by Created by wwj on 2021/4/9.
  */
 public class SelectDialog extends Dialog implements View.OnClickListener {
     private TextView confirm;

@@ -226,10 +226,10 @@ public boolean isMenuOpen(){
 //		ViewHelper.setScaleX(mMenu, leftScale);
 //		ViewHelper.setScaleY(mMenu, leftScale);
 //		ViewHelper.setAlpha(mMenu, 0.6f + 0.4f * (1 - scale));
-//		Log.d("gaolei","mMenuWidth----------------"+mMenuWidth);
-//		Log.d("gaolei","l---------------"+l);
-//		Log.d("gaolei","scale----------------"+l * 1.0f / mMenuWidth);
-//		Log.d("gaolei"," mMenuWidth * scale * 0.7f----------------"+ mMenuWidth * scale * 0.7f);
+//		Log.d("wwj","mMenuWidth----------------"+mMenuWidth);
+//		Log.d("wwj","l---------------"+l);
+//		Log.d("wwj","scale----------------"+l * 1.0f / mMenuWidth);
+//		Log.d("wwj"," mMenuWidth * scale * 0.7f----------------"+ mMenuWidth * scale * 0.7f);
         ViewHelper.setTranslationX(mMenu, mMenuWidth * scale * 0.7f);
 
 //		ViewHelper.setPivotX(mContent, 0);

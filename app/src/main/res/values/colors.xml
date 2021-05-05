@@ -48,5 +48,8 @@
     <color name="color_303030">#303030</color>
     <color name="color_999999">#999999</color>
     <color name="color_b1b1b1">#b1b1b1</color>
-
+    <color name="title_black">#222222</color>
+    <color name="grey_divider">#E5E5E5</color>
+    <color name="grey">#cccccc</color>
+    <color name="comment_text">#5b5d5c</color>
 </resources>

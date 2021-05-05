@@ -37,6 +37,8 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <!-- 打开手电筒 -->
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+
     <application
         android:name="com.MyEBike.application.DemoApplication"
         android:allowBackup="true"
@@ -50,7 +52,7 @@
             android:required="false" />
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="UoKhjbrZWjtpGQgjGwwZn1kbTZ3WsN8D" />
+            android:value="qaTAGHvdemAF7qOvt4RP5Hllrk8AKd5q" />
 
         <activity
             android:name="com.MyEBike.activity.SplashActivity"
@@ -76,6 +78,10 @@
         <activity android:name="com.MyEBike.activity.RouteDetailActivity" />
         <activity android:name="com.MyEBike.activity.MyRouteActivity" />
         <activity android:name="com.MyEBike.activity.NavigationActivity" />
+        <activity android:name=".activity.LoginActivity"/>
+        <activity android:name=".activity.RegisterActivity"/>
+        <activity android:name=".activity.ProblemPutActivity"/>
+        <activity android:name=".activity.AboutUsActivity"/>
         <activity
             android:name="com.MyEBike.activity.BDInnerNaviActivity"
             android:configChanges="orientation|screenSize|keyboard|keyboardHidden"

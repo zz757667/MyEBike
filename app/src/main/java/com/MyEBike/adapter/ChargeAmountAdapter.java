@@ -21,6 +21,7 @@ public class ChargeAmountAdapter extends RecyclerView.Adapter<ChargeAmountAdapte
     private int selectPosition = 0;
     private OnItemClickListener listener;
 
+
     public ChargeAmountAdapter(Context context) {
         this.context = context;
         accountArr = context.getResources().getStringArray(R.array.amount);
@@ -28,6 +29,7 @@ public class ChargeAmountAdapter extends RecyclerView.Adapter<ChargeAmountAdapte
 
     public void setSelectPosition(int selectPosition) {
         this.selectPosition = selectPosition;
+        //notifyDataSetChanged()可以在修改适配器绑定的数组后，不用重新刷新Activity，通知Activity更新ListView
         notifyDataSetChanged();
     }
 

@@ -30,7 +30,7 @@
             android:textSize="16sp" />
     </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/charge_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,13 +38,35 @@
         android:background="@drawable/shape_shadow_bg"
         android:orientation="vertical">
 
+
         <TextView
-            android:id="@+id/ballance"
+            android:id="@+id/ballance1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_toLeftOf="@+id/money"
             android:layout_marginTop="10dp"
-            android:text="@string/account_ballance"
+            android:text="@string/account_ballance1"
+            android:textColor="@color/color_9f9f9f"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="@string/money_default"
+            android:textColor="@color/color_9f9f9f"
+            android:textSize="22sp"/>
+
+        <TextView
+            android:id="@+id/ballance2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/money"
+
+            android:layout_marginTop="10dp"
+            android:text="@string/account_ballance2"
             android:textColor="@color/color_9f9f9f"
             android:textSize="22sp" />
 
@@ -52,11 +74,11 @@
             android:id="@+id/recyclerview_acount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/ballance"
+            android:layout_below="@id/ballance1"
             android:layout_margin="15dp"
             android:overScrollMode="never"
             android:scrollbars="none" />
-    </LinearLayout>
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/trancaction_type_layout"
@@ -132,13 +154,13 @@
         </RelativeLayout>
     </LinearLayout>
 
-    <TextView
+    <Button
+        android:id="@+id/charge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/trancaction_type_layout"
         android:layout_margin="15dp"
         android:background="@drawable/bt_book_selector"
-        android:clickable="true"
         android:gravity="center"
         android:padding="10dp"
         android:paddingTop="1dp"

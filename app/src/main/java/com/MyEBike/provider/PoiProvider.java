@@ -15,7 +15,7 @@ public class PoiProvider extends ContentProvider {
 	private SQLiteOpenHelper helper;
 	private SQLiteDatabase db;
 	private static UriMatcher matcher;
-	private static final String AUTHORITY = "com.biubike.provider.poiprovider";
+	private static final String AUTHORITY = "com.MyEBike.provider.poiprovider";
 	public static final Uri CONTENT_URI = Uri.parse("content://"+AUTHORITY);
 
 	static {

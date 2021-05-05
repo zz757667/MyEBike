@@ -22,9 +22,10 @@
     <string name="route">我的行程</string>
     <string name="invite_friend">邀请好友</string>
     <string name="feedback">问题反馈</string>
-    <string name="guide">使用指南</string>
-    <string name="setting">设置</string>
-    <string name="account_ballance">账户余额&#160;0&#160;元</string>
+    <string name="about_us">关于我们</string>
+    <string name="setting">退出登录</string>
+    <string name="account_ballance1">账户余额</string>
+    <string name="account_ballance2">元</string>
     <string name="transaction_type">请选择交易类型</string>
     <string name="charge_im">马上充值</string>
     <string name="routing">行程中</string>
@@ -36,6 +37,13 @@
     <string name="net_wifi">现已链接到Wi-Fi网络</string>
     <string name="net_mobile">现已连接到移动网络</string>
     <string name="net_none">现已进入无网世界</string>
+    <string name="login">登录</string>
+    <string name="register">注册</string>
+    <string name="login_account_tint">请输入用户名</string>
+    <string name="login_password_tint">请输入密码</string>
+    <string name="login_password_repeat">请再次输入密码</string>
+    <string name="login_in">登录</string>
+    <string name="or">Or</string>
 
     <string name="bike_time">骑行时长</string>
     <string name="bike_distance">骑行距离</string>
@@ -74,4 +82,10 @@
     <string name="demo_desc_location">demo_desc_location</string>
     <string name="demo_title_geocode">demo_title_geocode</string>
     <string name="demo_desc_geocode">demo_desc_geocode</string>
+    <string name="register_idcard">请输入身份证号码</string>
+    <string name="register_phone">请输入电话号码</string>
+    <string name="money_default">0</string>
+    <string name="problem_put">问题反馈</string>
+    <string name="battery">电量</string>
+    <string name="bike_battery">剩余电量</string>
 </resources>

@@ -9,7 +9,7 @@ import android.widget.VideoView;
 
 /**
  * 可以播放视频的View
- * Created by yuandl on 2016-11-10.
+ * Created by wwj on 2021/4/15.
  */
 
 public class CustomVideoView extends VideoView {

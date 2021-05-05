@@ -68,6 +68,7 @@ public class RouteService extends Service {
     public ArrayList<RoutePoint> routPointList = new ArrayList<>();
     public int totalDistance = 0;
     public int totalPrice = 0;
+    public int leftBattery = 100;
     public long beginTime = 0, totalTime = 0;
     private String showDistance, showTime, showPrice;
     private Notification notification;
@@ -80,6 +81,7 @@ public class RouteService extends Service {
         totalTime = 0;
         totalDistance = 0;
         totalPrice = 0;
+        leftBattery = 0;
         routPointList.clear();
         initLocation();//初始化LocationgClient
         initNotification();
@@ -223,7 +225,7 @@ public class RouteService extends Service {
             }
 
             totalTime = (int) (System.currentTimeMillis() - beginTime) / 1000 / 60;
-            totalPrice = (int) (Math.floor(totalTime / 60) * 1 + 1);
+            totalPrice = (int) (Math.floor(totalTime / 30) * 1 + 1);
 
 
             if (totalDistance > 1000) {
@@ -242,10 +244,10 @@ public class RouteService extends Service {
     }
 
     private void showRouteInfo(String time, String distance, String price, ArrayList<RoutePoint> routPointList) {
-        Log.d("gaolei", "totalTime---------post-----" + showTime);
-        Log.d("gaolei", "totalDistance-----post---------" + showDistance);
-        Log.d("gaolei", "totalPrice-------post-------" + showPrice);
-        Log.d("gaolei", "routPointList.size()-------post-------" + routPointList.size());
+        Log.d("wwj", "totalTime---------post-----" + showTime);
+        Log.d("wwj", "totalDistance-----post---------" + showDistance);
+        Log.d("wwj", "totalPrice-------post-------" + showPrice);
+        Log.d("wwj", "routPointList.size()-------post-------" + routPointList.size());
         EventBus.getDefault().post(new RoutePoints(routPointList, time, distance, price));
         startNotifi(time, distance, price);
     }

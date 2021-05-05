@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:ignore="ExtraText">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/color_343333">
+
+        <ImageView
+            android:id="@+id/menu_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:onClick="finishActivity"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:src="@mipmap/return_icon" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/problem_put"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="40dp"
+        android:layout_y="125dp"
+        android:text="反馈"
+        android:textSize="@dimen/dp_24" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="332dp"
+        android:layout_height="wrap_content"
+        android:layout_x="40dp"
+        android:layout_y="379dp"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/radiobutton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="无法关锁" />
+
+        <RadioButton
+            android:id="@+id/radiobutton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="收费问题" />
+
+        <RadioButton
+            android:id="@+id/radiobutton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="车辆部件损坏" />
+    </RadioGroup>
+
+
+
+
+    <Button
+        android:id="@+id/problem_put_button"
+        android:layout_width="332dp"
+        android:layout_height="wrap_content"
+        android:layout_x="40dp"
+        android:layout_y="430dp"
+        android:text="提交" />
+
+    <View
+        android:id="@+id/divider1"
+        android:layout_width="330dp"
+        android:layout_height="@dimen/dp_1"
+        android:layout_marginStart="@dimen/dp_64"
+        android:layout_marginEnd="@dimen/dp_64"
+        android:layout_x="40dp"
+        android:layout_y="175dp"
+        android:background="@color/grey_divider" />
+
+    <EditText
+        android:id="@+id/problem_put_edit1"
+        android:layout_width="330dp"
+        android:layout_height="188dp"
+        android:layout_x="40dp"
+        android:layout_y="176dp"
+        android:hint="请输入您的宝贵意见或问题反馈~"
+        android:background="@color/white" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="330dp"
+        android:layout_height="@dimen/dp_1"
+        android:layout_marginStart="@dimen/dp_64"
+        android:layout_marginEnd="@dimen/dp_64"
+        android:layout_x="40dp"
+        android:layout_y="365dp"
+        android:background="@color/grey_divider" />
+
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="1dp"
+        android:layout_height="189dp"
+        android:layout_marginStart="@dimen/dp_64"
+        android:layout_marginEnd="@dimen/dp_64"
+        android:layout_x="40dp"
+        android:layout_y="176dp"
+        android:background="@color/grey_divider" />
+
+    <View
+        android:id="@+id/divider4"
+        android:layout_width="1dp"
+        android:layout_height="189dp"
+        android:layout_marginStart="@dimen/dp_64"
+        android:layout_marginEnd="@dimen/dp_64"
+        android:layout_x="370dp"
+        android:layout_y="176dp"
+        android:background="@color/grey_divider" />
+</AbsoluteLayout>

@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by gaolei on 21/4/9.
+ * Created by wwj on 21/4/9.
  */
 
 public class MyRouteActivity extends BaseActivity implements MyRouteAdapter.OnItemClickListener {

@@ -34,27 +34,30 @@ android {
 
     }
     buildTypes {
-        debug {
-            signingConfig signingConfigs.release
 
-        }
-        release {
-            signingConfig signingConfigs.release
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            debuggable false
-            zipAlignEnabled true
-            shrinkResources true
-            minifyEnabled true
+        buildTypes {
+            debug {
+                signingConfig signingConfigs.release
 
-            applicationVariants.all { variant ->
-                variant.outputs.all {
-                    def fileName = "Biubike" + "_V${defaultConfig.versionName}(${defaultConfig.versionCode})_" +
-                            variant.name +
-                            ".apk"
-                    outputFileName = fileName
-                }
             }
+            release {
+                signingConfig signingConfigs.release
+                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+                debuggable false
+                zipAlignEnabled true
+                shrinkResources true
+                minifyEnabled true
 
+                applicationVariants.all { variant ->
+                    variant.outputs.all {
+                        def fileName = "Biubike" + "_V${defaultConfig.versionName}(${defaultConfig.versionCode})_" +
+                                variant.name +
+                                ".apk"
+                        outputFileName = fileName
+                    }
+                }
+
+            }
         }
     }
 
@@ -78,13 +81,22 @@ dependencies {
     implementation files('libs/baidumapapi_map_v4_1_1.jar')
     implementation files('libs/nineoldandroids-2.4.0.jar')
     implementation files('libs/baidumapapi_util_v4_1_1.jar')
-    implementation files('libs/gson-2.2.1.jar')
     implementation files('libs/BaiduNaviSDK_3.2.0.jar')
     implementation files('libs/Msc.jar')
     implementation files('libs/Msc.jar')
     implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
     implementation 'com.jcodecraeer:xrecyclerview:1.5.9'
     implementation 'org.greenrobot:eventbus:3.1.1'
+
+    //retrofit2
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.8.1'
+    //RxJava2的依赖
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.18'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
+    //gson
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
 }
 

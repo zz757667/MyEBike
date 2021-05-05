@@ -44,7 +44,7 @@ public class SplashActivity extends AppCompatActivity {
                         Observable.just("")
                                 .delay(1, TimeUnit.SECONDS)
                                 .subscribe(new LambdaObserver<>(s -> {
-                                    Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                                    Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
                                     startActivity(intent);
                                     finish();
                                 }, Functions.ON_ERROR_MISSING, Functions.EMPTY_ACTION, Functions.emptyConsumer()));

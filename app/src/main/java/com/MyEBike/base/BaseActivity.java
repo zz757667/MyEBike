@@ -4,17 +4,28 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.MyEBike.api.ApiWrapper;
+import com.MyEBike.api.AppManager;
+
 import java.lang.reflect.Field;
+
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 
 
 public class BaseActivity extends AppCompatActivity {
 
+    protected ApiWrapper apiWrapper;
+    protected CompositeDisposable mCompositeDisposable;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppManager.getAppManager(this).addActivity(this);
         //7.0以上TRANSLUCENT_STATUS时部分手机状态栏有灰色遮罩，去掉它
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             View decorView = getWindow().getDecorView();
@@ -36,9 +47,35 @@ public class BaseActivity extends AppCompatActivity {
                 }
             }
         }
+        apiWrapper = new ApiWrapper();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AppManager.getAppManager(this).finishActivity(this);
+        unDispose();
+    }
+
+    public void addDispose(Disposable disposable) {
+        if (mCompositeDisposable == null) {
+            mCompositeDisposable = new CompositeDisposable();
+        }
+        mCompositeDisposable.add(disposable);//将所有 Disposable 放入容器集中处理
+    }
+
+    /**
+     * 停止集合中正在执行的 RxJava 任务
+     */
+    public void unDispose() {
+        Log.d("BasePresenter", "unDispose");
+        if (mCompositeDisposable != null) {
+            mCompositeDisposable.clear();//保证 Activity 结束时取消所有正在执行的订阅
+        }
     }
 
     public void finishActivity(View view) {
         finish();
     }
+
 }

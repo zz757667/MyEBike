@@ -19,8 +19,6 @@ import java.util.List;
 
 /**
  * 可扩展的单选对话框
- *
- * @author guo
  */
 public class NaviSelectDialog extends Dialog implements View.OnClickListener {
 

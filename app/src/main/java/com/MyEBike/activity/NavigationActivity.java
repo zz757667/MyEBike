@@ -197,7 +197,7 @@ public class NavigationActivity extends BaseActivity implements
             recyclerview_poi_history.setAdapter(poiHostoryAdapter);
             poiHostoryAdapter.setOnClickListener(this);
         } catch (Exception e) {
-            Log.d("gaolei", e.getMessage());
+            Log.d("wwj", e.getMessage());
         }
     }
 

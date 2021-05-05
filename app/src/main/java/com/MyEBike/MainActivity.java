@@ -20,6 +20,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.MyEBike.activity.AboutUsActivity;
+import com.MyEBike.activity.LoginActivity;
+import com.MyEBike.activity.ProblemPutActivity;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
@@ -90,8 +93,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     private TextView current_addr;
     private TextView title, book_bt, end_route;
     private LinearLayout llBikeLayout, llBikeDetail, llPrice;
-    private TextView prompt, textview_time, textview_distance, textview_price, unlock;
-    private TextView bike_distance, bike_time, bike_price;
+    private TextView prompt, textview_time, textview_distance, textview_price, textview_battery,unlock;
+    private TextView bike_distance, bike_time, bike_price,bike_battery;
     private long exitTime = 0;
     private View divider;
     //自定义图标
@@ -124,7 +127,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         EventBus.getDefault().register(this);
         initMap();
         initView();
-        isServiceLive = Utils.isServiceWork(this, "com.biubike.service.RouteService");
+        isServiceLive = Utils.isServiceWork(this, "com.MyEBike.service.RouteService");
         if (isServiceLive)
             beginService();
 
@@ -217,7 +220,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             LocationManager.getInstance().setAddress(bdLocation.getAddrStr());
             startNodeStr = PlanNode.withLocation(currentLL);
 
-            Log.d("gaolei", "currentLL----------" + currentLL);
+            Log.d("wwj", "currentLL----------" + currentLL);
             //可能会调用多次，而我们下面的逻辑只想第一次进入的时候调用一次，所以要判断一下isFirstLoc
             if (isFirstLoc) {
                 isFirstLoc = false;
@@ -249,10 +252,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         llBikeDetail = findViewById(R.id.ll_bike_detail);
         bike_time = findViewById(R.id.bike_time);
         bike_distance = findViewById(R.id.bike_distance);
+        bike_battery = findViewById(R.id.bike_battery);
         bike_price = findViewById(R.id.bike_price);
         textview_time = findViewById(R.id.textview_time);
         textview_distance = findViewById(R.id.textview_distance);
         textview_price = findViewById(R.id.textview_price);
+        textview_battery = findViewById(R.id.textview_battery);
         unlock = findViewById(R.id.unlock);
         divider = findViewById(R.id.divider);
         llPrice = findViewById(R.id.ll_bike_price);
@@ -623,6 +628,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     public void gotoWallet(View view) {
         startActivity(new Intent(this, WalletActivity.class));
     }
+    public void gotoProblemPut(View view) {
+        startActivity(new Intent(this, ProblemPutActivity.class));
+    }
+    public void gotoAboutUs(View view) {
+        startActivity(new Intent(this, AboutUsActivity.class));
+    }
+    public void gotoLogin(View view) {
+        startActivity(new Intent(this, LoginActivity.class));
+    }
 
     public void gotoNavigation(View view) {
         startActivity(new Intent(this, NavigationActivity.class));
@@ -650,9 +664,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         textview_time.setTextSize(16);
         textview_distance.setTextSize(16);
         textview_price.setTextSize(16);
+        textview_battery.setTextSize(16);
         bike_time.setTextSize(16);
         bike_distance.setTextSize(16);
         bike_price.setTextSize(16);
+        bike_battery.setTextSize(16);
 
         llBikeLayout.setVisibility(View.GONE);
         prompt.setVisibility(View.GONE);
@@ -683,16 +699,20 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         textview_time.setText(getString(R.string.bike_time));
         textview_distance.setText(getString(R.string.bike_distance));
         textview_price.setText(getString(R.string.bike_price));
+        textview_battery.setText(getString(R.string.bike_battery));
         prompt.setText(getString(R.string.routing_prompt));
 
         bike_time.setText("0分钟");
         bike_distance.setText("0米");
         bike_price.setText("0元");
+        textview_battery.setText("100%");
+
         llPrice.setVisibility(View.VISIBLE);
 
         textview_time.setTextSize(20);
         textview_distance.setTextSize(20);
         textview_price.setTextSize(20);
+        textview_battery.setTextSize(20);
         bike_time.setTextSize(20);
         bike_distance.setTextSize(20);
         bike_price.setTextSize(20);
@@ -757,7 +777,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
             if (llBikeLayout.getVisibility() == View.VISIBLE) {
-                if (!Utils.isServiceWork(this, "com.biubike.service.RouteService"))
+                if (!Utils.isServiceWork(this, "com.MyEBike.service.RouteService"))
                     cancelBook();
                 return true;
             }
